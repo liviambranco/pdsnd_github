@@ -6,6 +6,10 @@ CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
 
+MONTHS = ['all', 'january', 'february', 'march', 'april', 'may', 'june']
+
+DAYS = ['all', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+
 def get_filters():
     """
     Asks user to specify a city, month, and day to analyze.
@@ -19,30 +23,31 @@ def get_filters():
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     while True:
         city = input('\nWhat city would you like to analyze? \nChicago, New York City or Washington? ').lower()
-        if city not in ['chicago', 'new york city', 'washington']:
+        if city not in CITY_DATA.keys():
                         print('\nSorry, the city you entered is not in our database.')
         else:
-                        print('\nYou chose:', city.upper())
+                        print('\nYou chose {}'.format(city.upper()))
                         break
 
 
     # TO DO: get user input for month (all, january, february, ... , june)
+
     while True:
-        month = input('\nPlease specify the month to analyze (all, January util June): ').lower()
-        if month not in ['all', 'january', 'february', 'march', 'april', 'may', 'june']:
+        month = input('\nPlease specify the month to analyze (all, January until June): ').lower()
+        if month not in MONTHS or 'all':
             print('\nSorry, you entered an invalid month.')
         else:
-                print('\nYou chose:', month.upper())
+                print('\nYou chose {}'.format(month.upper()))
                 break
 
     # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
 
     while True:
         day = input('\nPlease specify the day of the week to analyze (all, monday...): ').lower()
-        if day not in ['all', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']:
+        if day not in DAYS:
             print('\nSorry, you entered an invalid day.')
         else:
-                print('\nYou chose:', day.upper())
+                print('\nYou chose {}'.format(day.upper()))
                 break
 
     print('-'*40)
@@ -86,16 +91,16 @@ def time_stats(df):
 
     # TO DO: display the most common month
     popular_month = df['month'].mode()[0]
-    print('\nThe most popoular month is:', popular_month)
+    print('\nThe most popoular month is{}'.format(popular_month))
 
     # TO DO: display the most common day of week
     popular_day = df['day'].mode()[0]
-    print('\nThe most popoular day is:', popular_day)
+    print('\nThe most popoular day is {}'.format(popular_day))
 
     # TO DO: display the most common start hour
 
     popular_hour = df['hour'].mode()[0]
-    print('\nThe most popoular hour is:', popular_hour)
+    print('\nThe most popoular hour is {}'.format(popular_hour))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -109,17 +114,17 @@ def station_stats(df):
 
     # TO DO: display most commonly used start station
     popular_start = df['Start Station'].mode()[0]
-    print('\nThe most popular start station is:', popular_start)
+    print('\nThe most popular start station is {}'.format(popular_start))
 
     # TO DO: display most commonly used end station
     popular_end = df['End Station'].mode()[0]
-    print('\nThe most popular end station is:', popular_end)
+    print('\nThe most popular end station is {}'.format(popular_end))
 
     # TO DO: display most frequent combination of start station and end station trip
-    df['Start and End Sations'] = df['Start Station'] + ' ' + 'to' + ' ' + df['End Station']
-    popular_route = df ['Start and End Sations'].mode()[0]
+    df['Start and End Stations'] = df['Start Station'] + ' ' + 'to' + ' ' + df['End Station']
+    popular_route = df ['Start and End Stations'].mode()[0]
 
-    print('\nThe most popular route station is:', popular_route)
+    print('\nThe most popular route station is:{}'.format(popular_route))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -133,11 +138,11 @@ def trip_duration_stats(df):
 
     # TO DO: display total travel time
     total_travel_time = df['Trip Duration'].sum()
-    print('\nThe total travel time was:', total_travel_time)
+    print('\nThe total travel time was {}'.format(total_travel_time))
 
     # TO DO: display mean travel time
     mean_travel_time = df['Trip Duration'].mean()
-    print('\nThe mean travel time was:', mean_travel_time)
+    print('\nThe mean travel time was {}'.format(mean_travel_time))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -164,14 +169,14 @@ def user_stats(df):
     # TO DO: Display earliest, most recent, and most common year of birth
     try:
         earliest_year_of_birth = df['Birth Year'].min().astype(int)
-        print('\nThe oldest client was born in:', earliest_year_of_birth)
+        print('\nThe oldest client was born in {}'.format(earliest_year_of_birth))
         most_recent_year_of_birth = df['Birth Year'].max().astype(int)
-        print('\nThe youngest client was born in:', most_recent_year_of_birth)
+        print('\nThe youngest client was born in {}'.format(most_recent_year_of_birth))
         most_common_year_of_birth = df['Birth Year'].mode()[0].astype(int)
-        print('\nMost clients were born in:', most_common_year_of_birth)
+        print('\nMost clients were born in {}'.format(most_common_year_of_birth))
 
     except:
-        print('\nSorry, no birth year information availible.')
+        print('\nSorry, no birth year information available.')
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -180,7 +185,7 @@ def user_stats(df):
 def raw_data(df):
 
     """
-    Asks user to whether they would like want to see the raw data.
+    Asks user to whether they would like to see the raw data.
     If the user answers 'yes,' print 5 rows of the data at a time.
 
     Returns:
@@ -197,7 +202,7 @@ def raw_data(df):
         elif prompt_1 in ['yes', 'y', 'ye', 'ys']:
             print(df.iloc[x:x + 5])
             x = x + 5
-        
+
     """
     Continue prompting and printing the next 5 rows at a time until the user chooses 'no.'
 
