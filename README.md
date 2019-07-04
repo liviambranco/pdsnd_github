@@ -4,6 +4,9 @@
 ### Project Title
 Bikeshare
 
+![motivate bike.jpg](https://www.motivateco.com/wp-content/uploads/2018/06/36183566546_c20f5253b1_k-1024x684.jpg)
+(source: Motivate)
+
 ### Description
 This project explores data related to Motivate, a bike share system present in three major cities in the United States—Chicago, New York City, and Washington. It's goal is to answer critical questions about the business and uncover usage patterns within a user-friendly frame.
 We will do that by importing the data provided by Motivate and writing code to compute descriptive statistics and answer the questions. We will also write a script that takes in raw input to create an interactive experience in the terminal to present these statistics.
