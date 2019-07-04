@@ -14,6 +14,11 @@ We will do that by importing the data provided by Motivate and writing code to c
 - washington.csv
 - new_york_city.csv
 
+### Software requirements
+- Anaconda (with Python 3, NumPy, and Pandas installed)
+- Atom (or another text editor)
+- A terminal application (Terminal, Cygwin)
+
 ### Credits
 Bikeshare information:
 (https://classroom.udacity.com/nanodegrees/nd104/parts/53470233-d93c-4a31-a59f-11388272fe6b/modules/0f8a717f-4ac2-49d7-9ac4-15ae692793fa/lessons/ee7d089a-4a92-4e5d-96d2-bb256fae28e9/concepts/87034580-6b86-4f45-9981-88f5c86d21bf)
