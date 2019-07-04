@@ -28,7 +28,7 @@ def get_filters():
 
     # TO DO: get user input for month (all, january, february, ... , june)
     while True:
-        month = input('\nPlease specify the month to analyze (all, January util June): ').lower()
+        month = input('\nPlease specify the month to analyze (all, January until June): ').lower()
         if month not in ['all', 'january', 'february', 'march', 'april', 'may', 'june']:
             print('\nSorry, you entered an invalid month.')
         else:
@@ -86,16 +86,16 @@ def time_stats(df):
 
     # TO DO: display the most common month
     popular_month = df['month'].mode()[0]
-    print('\nThe most popoular month is:', popular_month)
+    print('\nThe most popular month is:', popular_month)
 
     # TO DO: display the most common day of week
     popular_day = df['day'].mode()[0]
-    print('\nThe most popoular day is:', popular_day)
+    print('\nThe most popular day is:', popular_day)
 
     # TO DO: display the most common start hour
 
     popular_hour = df['hour'].mode()[0]
-    print('\nThe most popoular hour is:', popular_hour)
+    print('\nThe most popular hour is:', popular_hour)
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -116,8 +116,8 @@ def station_stats(df):
     print('\nThe most popular end station is:', popular_end)
 
     # TO DO: display most frequent combination of start station and end station trip
-    df['Start and End Sations'] = df['Start Station'] + ' ' + 'to' + ' ' + df['End Station']
-    popular_route = df ['Start and End Sations'].mode()[0]
+    df['Start and End Stations'] = df['Start Station'] + ' ' + 'to' + ' ' + df['End Station']
+    popular_route = df ['Start and End Stations'].mode()[0]
 
     print('\nThe most popular route station is:', popular_route)
 
@@ -171,7 +171,7 @@ def user_stats(df):
         print('\nMost clients were born in:', most_common_year_of_birth)
 
     except:
-        print('\nSorry, no birth year information availible.')
+        print('\nSorry, no birth year information available.')
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -180,7 +180,7 @@ def user_stats(df):
 def raw_data(df):
 
     """
-    Asks user to whether they would like want to see the raw data.
+    Asks user to whether they would like to see the raw data.
     If the user answers 'yes,' print 5 rows of the data at a time.
 
     Returns:
@@ -197,7 +197,7 @@ def raw_data(df):
         elif prompt_1 in ['yes', 'y', 'ye', 'ys']:
             print(df.iloc[x:x + 5])
             x = x + 5
-        
+
     """
     Continue prompting and printing the next 5 rows at a time until the user chooses 'no.'
 
